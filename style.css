@@ -1,217 +1,157 @@
-/* style.css */
-
+/* Reset and basics */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #eee;
 }
 
 body {
-  font-family: "Quicksand", sans-serif;
-  background-color: #0a0a0a;
-  color: #f0f0f0;
-  line-height: 1.6;
+  background: linear-gradient(180deg, #0a0a23 0%, #001e3c 100%);
   overflow-x: hidden;
+  min-height: 100vh;
+  position: relative;
+  transition: background-color 0.5s ease;
 }
 
-/* Loader styles */
-#loader {
+/* Loader */
+.loader-wrapper {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: #0a0a0a;
+  inset: 0;
+  background-color: #001e3c;
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 9999;
-  transition: opacity 0.5s ease;
 }
 
-.spinner {
-  width: 70px;
-  height: 70px;
-  border: 8px solid #2c0b63; /* dark purple */
-  border-top: 8px solid #b000f0; /* neon purple */
+.loader {
+  width: 60px;
+  height: 60px;
+  border: 8px solid #444;
+  border-top-color: #6cf;
   border-radius: 50%;
-  animation: spin 1.5s linear infinite;
-  box-shadow: 0 0 8px #b000f0, 0 0 20px #b000f0;
+  animation: spin 1s linear infinite;
 }
 
 @keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
+  to { transform: rotate(360deg); }
 }
 
-/* Fade-in animations for content */
-body.loaded #loader {
-  opacity: 0;
+/* Stars background */
+.stars {
+  position: fixed;
+  inset: 0;
+  background: transparent;
+  box-shadow:
+    20px 50px 2px #fff,
+    150px 80px 3px #ddd,
+    300px 120px 2px #eee,
+    500px 200px 3px #fff,
+    700px 400px 2px #ccc,
+    900px 600px 3px #eee;
+  z-index: 0;
   pointer-events: none;
-  visibility: hidden;
+  animation: twinkle 5s infinite alternate;
 }
 
-body.loaded main,
-body.loaded header,
-body.loaded footer,
-body.loaded .hero,
-body.loaded .features,
-body.loaded article {
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity 1s ease, transform 1s ease;
+@keyframes twinkle {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
 }
 
-/* Initial state before loaded */
-main,
-header,
-footer,
-.hero,
-.features,
-article {
-  opacity: 0;
-  transform: translateY(30px);
+/* UFOs (simple circles with glow) */
+.ufos {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
 }
 
-header {
-  background: #111;
-  padding: 1rem 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 2px solid #222;
-  position: sticky;
-  top: 0;
-  z-index: 100;
+.ufos::before, .ufos::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, #8af 70%, transparent 80%);
+  width: 60px;
+  height: 30px;
+  top: 100px;
+  left: 200px;
+  filter: drop-shadow(0 0 6px #8af);
+  animation: ufo-float 6s ease-in-out infinite;
 }
 
-header h1 {
-  font-family: "Orbitron", sans-serif;
-  color: #b000f0;
-  letter-spacing: 2px;
-  font-size: 2rem;
+.ufos::after {
+  width: 40px;
+  height: 20px;
+  top: 300px;
+  left: 700px;
+  background: radial-gradient(circle, #fa8 70%, transparent 80%);
+  filter: drop-shadow(0 0 8px #fa8);
+  animation-delay: 3s;
 }
 
-nav a {
-  color: #f0f0f0;
-  text-decoration: none;
-  margin-left: 1.5rem;
-  font-size: 1rem;
-  transition: color 0.3s ease, text-shadow 0.3s ease;
+@keyframes ufo-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
 }
 
-nav a:hover {
-  color: #d500f9;
-  text-shadow: 0 0 8px #d500f9;
-}
-
-.hero {
-  background: linear-gradient(to bottom, #0f0f0f, #1a1a1a);
-  padding: 6rem 2rem 5rem 2rem;
-  text-align: center;
-  min-height: 70vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-}
-
-.hero h2 {
-  font-size: 3rem;
+/* Site Title and Nav */
+.site-title {
+  font-size: 2.8rem;
   font-weight: 700;
-  color: #b000f0;
-  text-shadow: 0 0 10px #b000f0aa;
-}
-
-.hero p {
-  font-size: 1.25rem;
-  max-width: 650px;
-  color: #bbb;
-  line-height: 1.5;
-}
-
-.btn {
-  display: inline-block;
-  margin-top: 1.5rem;
-  padding: 0.85rem 2rem;
-  background: #b000f0;
-  color: #fff;
-  border: none;
-  border-radius: 30px;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 1.1rem;
-  box-shadow: 0 0 12px #b000f0;
-  transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
-}
-
-.btn:hover {
-  background: #d500f9;
-  box-shadow: 0 0 20px #d500f9;
-  transform: scale(1.05);
-}
-
-section.features {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-  padding: 4rem 2rem 6rem 2rem;
-  background-color: #111;
-}
-
-.feature {
-  background: #1a1a1a;
-  padding: 2rem;
-  border-radius: 12px;
   text-align: center;
-  cursor: default;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 0 8px #3a0a82;
-}
-
-.feature:hover {
-  transform: translateY(-7px);
-  box-shadow: 0 0 25px #b000f0aa;
-}
-
-.feature h3 {
-  margin-bottom: 1rem;
-  color: #b000f0;
-  font-weight: 700;
-  font-size: 1.5rem;
-}
-
-.feature p {
-  color: #ccc;
-  font-size: 1rem;
-  line-height: 1.4;
-}
-
-footer {
-  background: #0a0a0a;
-  padding: 1.5rem;
-  text-align: center;
-  font-size: 0.9rem;
-  color: #666;
-  border-top: 1px solid #222;
+  margin: 1rem 0;
+  color: #89c9ff;
+  text-shadow: 0 0 5px #4a90e2;
   user-select: none;
 }
 
-/* Responsive tweaks */
-@media (max-width: 600px) {
-  .hero h2 {
-    font-size: 2.2rem;
-  }
-  .hero p {
-    font-size: 1rem;
-  }
-  nav a {
-    margin-left: 1rem;
-    font-size: 0.9rem;
-  }
+/* Navigation */
+nav ul {
+  display: flex;
+  justify-content: center;
+  gap: 1.2rem;
+  list-style: none;
+  margin-bottom: 1.5rem;
 }
+
+nav ul li a {
+  position: relative;
+  color: #a8bfff;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 0.3rem 0.6rem;
+  transition: color 0.3s ease;
+  cursor: pointer;
+  user-select: none;
+}
+
+nav ul li a.magnet {
+  will-change: transform;
+}
+
+nav ul li a:hover,
+nav ul li a.magnet.active {
+  color: #6cf;
+  text-shadow: 0 0 6px #6cf;
+}
+
+nav ul li a.magnet::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: #6cf;
+  bottom: 0;
+  left: 0;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+  transform-origin: right;
+}
+
+nav ul li a.magnet:hover::after,
+nav ul li a.magnet.active::after {
+  transform: scaleX(1);
+  transform-origin: left
