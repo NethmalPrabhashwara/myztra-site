@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Myztra | Blog</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="loader-wrapper">
+    <div class="loader"></div>
+  </div>
+
+  <div class="stars"></div>
+  <div class="ufos"></div>
+
+  <header>
+    <h1 class="site-title">Myztra</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html" class="magnet">Home</a></li>
+        <li><a href="adventures.html" class="magnet">Adventures</a></li>
+        <li><a href="paranormal.html" class="magnet">Paranormal</a></li>
+        <li><a href="conspiracies.html" class="magnet">Conspiracies</a></li>
+        <li><a href="mysteries.html" class="magnet">Mysteries</a></li>
+        <li><a href="blog.html" class="magnet active">Blog</a></li>
+      </ul>
+    </nav>
+    <button id="audio-toggle" aria-label="Toggle sound" title="Toggle sound">🔊</button>
+    <button id="theme-toggle" aria-label="Toggle theme" title="Toggle theme">🌙</button>
+  </header>
+
+  <main>
+    <section class="content-section">
+      <h2>Latest Blog Posts</h2>
+      <article>
+        <h3><a href="post.html?id=1">Understanding the Origins of The Bloop</a></h3>
+        <p>Deep dive into the mysterious sound recorded in the Pacific Ocean...</p>
+      </article>
+      <article>
+        <h3><a href="post.html?id=2">Top 5 Unsolved Paranormal Mysteries</a></h3>
+        <p>A countdown of the most baffling ghost stories and hauntings...</p>
+      </article>
+      <article>
+        <h3><a href="post.html?id=3">Conspiracy Theories That Turned Out to Be True</a></h3>
+        <p>Exploring conspiracies that history later confirmed...</p>
+      </article>
+    </section>
+  </main>
+
+  <audio id="ambience" loop autoplay>
+    <source src="sounds/blog-bg.mp3" type="audio/mpeg" />
+  </audio>
+
+  <div class="custom-cursor"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
