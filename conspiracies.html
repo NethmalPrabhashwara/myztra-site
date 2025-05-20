@@ -3,61 +3,54 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Conspiracies - Myztra</title>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Quicksand&display=swap"
-    rel="stylesheet"
-  />
+  <title>Myztra | Conspiracies</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div id="loader">
-    <div class="spinner"></div>
+  <div class="loader-wrapper">
+    <div class="loader"></div>
   </div>
 
+  <div class="stars"></div>
+  <div class="ufos"></div>
+
   <header>
-    <h1>Myztra</h1>
+    <h1 class="site-title">Myztra</h1>
     <nav>
-      <a href="index.html">Home</a>
-      <a href="adventures.html">Adventures</a>
-      <a href="paranormal.html">Paranormal</a>
-      <a href="conspiracies.html" class="active">Conspiracies</a>
-      <a href="mysteries.html">Mysteries</a>
+      <ul>
+        <li><a href="index.html" class="magnet">Home</a></li>
+        <li><a href="adventures.html" class="magnet">Adventures</a></li>
+        <li><a href="paranormal.html" class="magnet">Paranormal</a></li>
+        <li><a href="conspiracies.html" class="magnet active">Conspiracies</a></li>
+        <li><a href="mysteries.html" class="magnet">Mysteries</a></li>
+        <li><a href="blog.html" class="magnet">Blog</a></li>
+      </ul>
     </nav>
+    <button id="audio-toggle" aria-label="Toggle sound" title="Toggle sound">🔊</button>
+    <button id="theme-toggle" aria-label="Toggle theme" title="Toggle theme">🌙</button>
   </header>
 
-  <main class="content">
-    <section class="hero">
-      <h2>Conspiracies Unveiled</h2>
-      <p>Investigate secret plots, hidden agendas, and mysterious cover-ups.</p>
-    </section>
-
-    <section class="posts">
+  <main>
+    <section class="content-section">
+      <h2>Conspiracies</h2>
+      <p>Dive into shadowy plots and cover-ups from history and today.</p>
       <article>
-        <h3>The Moon Landing Hoax Theories</h3>
-        <p>Exploring the claims and debunking myths surrounding the Apollo missions.</p>
+        <h3>The Lost Moon Landing Tapes</h3>
+        <p>Exploring the theory that crucial footage was deliberately destroyed...</p>
       </article>
       <article>
-        <h3>The Mystery of Area 51</h3>
-        <p>Uncover what’s been rumored and revealed about this secretive military base.</p>
-      </article>
-      <article>
-        <h3>Ancient Alien Hypothesis</h3>
-        <p>Theories about extraterrestrial influence on early human civilizations.</p>
+        <h3>Secret Societies and Hidden Agendas</h3>
+        <p>Unveiling the myths and facts behind some of the world's most secretive groups...</p>
       </article>
     </section>
   </main>
 
-  <footer>&copy; 2025 Myztra. All rights reserved.</footer>
+  <audio id="ambience" loop autoplay>
+    <source src="sounds/conspiracy-tone.mp3" type="audio/mpeg" />
+  </audio>
 
-  <script>
-    window.addEventListener("load", () => {
-      document.body.classList.add("loaded");
-      setTimeout(() => {
-        const loader = document.getElementById("loader");
-        if (loader) loader.style.display = "none";
-      }, 600);
-    });
-  </script>
+  <div class="custom-cursor"></div>
+
+  <script src="script.js"></script>
 </body>
 </html>
