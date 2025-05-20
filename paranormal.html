@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Paranormal - Myztra</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Quicksand&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="loader">
+    <div class="spinner"></div>
+  </div>
+
+  <header>
+    <h1>Myztra</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="adventures.html">Adventures</a>
+      <a href="paranormal.html" class="active">Paranormal</a>
+      <a href="conspiracies.html">Conspiracies</a>
+      <a href="mysteries.html">Mysteries</a>
+    </nav>
+  </header>
+
+  <main class="content">
+    <section class="hero">
+      <h2>Paranormal Phenomena</h2>
+      <p>Ghosts, cryptids, hauntings, and unexplained supernatural events.</p>
+    </section>
+
+    <section class="posts">
+      <article>
+        <h3>The Enfield Poltergeist Case</h3>
+        <p>A deep dive into one of the most famous haunting investigations ever recorded.</p>
+      </article>
+      <article>
+        <h3>Cryptids of the Deep Forest</h3>
+        <p>Exploring mysterious creatures reported in remote woods around the world.</p>
+      </article>
+      <article>
+        <h3>Technology & The Paranormal</h3>
+        <p>How modern devices help capture and analyze supernatural phenomena.</p>
+      </article>
+    </section>
+  </main>
+
+  <footer>&copy; 2025 Myztra. All rights reserved.</footer>
+
+  <script>
+    window.addEventListener("load", () => {
+      document.body.classList.add("loaded");
+      setTimeout(() => {
+        const loader = document.getElementById("loader");
+        if (loader) loader.style.display = "none";
+      }, 600);
+    });
+  </script>
+</body>
+</html>

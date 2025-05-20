@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Adventures - Myztra</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Quicksand&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="loader">
+    <div class="spinner"></div>
+  </div>
+
+  <header>
+    <h1>Myztra</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="adventures.html" class="active">Adventures</a>
+      <a href="paranormal.html">Paranormal</a>
+      <a href="conspiracies.html">Conspiracies</a>
+      <a href="mysteries.html">Mysteries</a>
+    </nav>
+  </header>
+
+  <main class="content">
+    <section class="hero">
+      <h2>Adventures & Quests</h2>
+      <p>Epic journeys, brave explorations, and legendary quests await.</p>
+    </section>
+
+    <section class="posts">
+      <article>
+        <h3>The Lost City of Z</h3>
+        <p>Explore the myths and real stories behind the legendary Amazonian city.</p>
+      </article>
+      <article>
+        <h3>Mountaineering the Uncharted Peaks</h3>
+        <p>Discover tales from the world's most dangerous and mysterious mountains.</p>
+      </article>
+      <article>
+        <h3>Medieval Treasure Hunts</h3>
+        <p>Follow clues and uncover secrets buried beneath history.</p>
+      </article>
+    </section>
+  </main>
+
+  <footer>&copy; 2025 Myztra. All rights reserved.</footer>
+
+  <script>
+    window.addEventListener("load", () => {
+      document.body.classList.add("loaded");
+      setTimeout(() => {
+        const loader = document.getElementById("loader");
+        if (loader) loader.style.display = "none";
+      }, 600);
+    });
+  </script>
+</body>
+</html>
