@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Myztra | Adventures</title>
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -19,37 +19,25 @@
     <nav>
       <ul>
         <li><a href="index.html" class="magnet">Home</a></li>
-        <li><a href="adventures.html" class="magnet active">Adventures</a></li>
+        <li><a href="adventures.html" class="magnet">Adventures</a></li>
         <li><a href="paranormal.html" class="magnet">Paranormal</a></li>
         <li><a href="conspiracies.html" class="magnet">Conspiracies</a></li>
         <li><a href="mysteries.html" class="magnet">Mysteries</a></li>
         <li><a href="blog.html" class="magnet">Blog</a></li>
       </ul>
     </nav>
-    <button id="audio-toggle" aria-label="Toggle sound" title="Toggle sound">🔊</button>
-    <button id="theme-toggle" aria-label="Toggle theme" title="Toggle theme">🌙</button>
   </header>
 
   <main>
-    <section class="content-section">
-      <h2>Adventures</h2>
-      <p>Explore thrilling quests and daring journeys into the unknown realms.</p>
-      <article>
-        <h3>The Lost City Expedition</h3>
-        <p>Discover the secrets of an ancient city hidden deep within the jungle...</p>
-      </article>
-      <article>
-        <h3>Mountain of Whispers</h3>
-        <p>Legend tells of a mountain that speaks to those brave enough to climb it...</p>
-      </article>
+    <section class="intro">
+      <h2>Adventure Awaits</h2>
+      <p>Explore daring quests, lost civilizations, and otherworldly journeys across time and space. This is where the thrill begins.</p>
     </section>
   </main>
 
-  <audio id="ambience" loop autoplay>
-    <source src="sounds/adventure-ambience.mp3" type="audio/mpeg" />
-  </audio>
-
   <div class="custom-cursor"></div>
+  <button class="sound-toggle">🔊</button>
+  <button class="theme-toggle">🌓</button>
 
   <script src="script.js"></script>
 </body>
