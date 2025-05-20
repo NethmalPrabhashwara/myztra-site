@@ -3,71 +3,47 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Myztra - Adventures, Quests & Mysteries</title>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Quicksand&display=swap"
-    rel="stylesheet"
-  />
+  <title>Myztra | Home</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Loader -->
-  <div id="loader">
-    <div class="spinner"></div>
+  <div class="loader-wrapper">
+    <div class="loader"></div>
   </div>
 
+  <div class="stars"></div>
+  <div class="ufos"></div>
+
   <header>
-    <h1>Myztra</h1>
+    <h1 class="site-title">Myztra</h1>
     <nav>
-      <a href="index.html">Home</a>
-      <a href="adventures.html">Adventures</a>
-      <a href="paranormal.html">Paranormal</a>
-      <a href="conspiracies.html">Conspiracies</a>
-      <a href="mysteries.html">Mysteries</a>
+      <ul>
+        <li><a href="index.html" class="magnet active">Home</a></li>
+        <li><a href="adventures.html" class="magnet">Adventures</a></li>
+        <li><a href="paranormal.html" class="magnet">Paranormal</a></li>
+        <li><a href="conspiracies.html" class="magnet">Conspiracies</a></li>
+        <li><a href="mysteries.html" class="magnet">Mysteries</a></li>
+        <li><a href="blog.html" class="magnet">Blog</a></li>
+      </ul>
     </nav>
+    <button id="audio-toggle" aria-label="Toggle sound" title="Toggle sound">🔊</button>
+    <button id="theme-toggle" aria-label="Toggle theme" title="Toggle theme">🌙</button>
   </header>
 
-  <section class="hero">
-    <h2>Explore the Unknown</h2>
-    <p>
-      Dive deep into adventures, quests, paranormal tales, conspiracies, and
-      unsolved mysteries from around the world.
-    </p>
-    <a href="adventures.html" class="btn">Start Your Journey</a>
-  </section>
+  <main>
+    <section class="intro">
+      <h2>Dive into the Dark, the Weird, and the Unexplained</h2>
+      <p>From shadowy conspiracies to cosmic adventures, Myztra is your portal into the secrets that lie just beyond reach.</p>
+    </section>
+  </main>
 
-  <section class="features">
-    <div class="feature">
-      <h3>Adventures & Quests</h3>
-      <p>True tales of exploration and legendary journeys.</p>
-    </div>
-    <div class="feature">
-      <h3>Paranormal Phenomena</h3>
-      <p>Ghost stories, cryptids, and unexplained events.</p>
-    </div>
-    <div class="feature">
-      <h3>Conspiracies</h3>
-      <p>Unveil hidden truths and secret plots.</p>
-    </div>
-    <div class="feature">
-      <h3>Mysteries</h3>
-      <p>Unsolved cases and enigmatic puzzles.</p>
-    </div>
-  </section>
+  <audio id="ambience" loop autoplay>
+    <source src="sounds/mystery-bg.mp3" type="audio/mpeg" />
+  </audio>
 
-  <footer>&copy; 2025 Myztra. All rights reserved.</footer>
+  <div class="custom-cursor"></div>
 
-  <script>
-    window.addEventListener("load", () => {
-      // Add 'loaded' class to body after page fully loads
-      document.body.classList.add("loaded");
-
-      // Remove loader div after fade out
-      setTimeout(() => {
-        const loader = document.getElementById("loader");
-        if (loader) loader.style.display = "none";
-      }, 600);
-    });
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
+
