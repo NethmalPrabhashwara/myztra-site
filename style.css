@@ -1,157 +1,190 @@
-/* Reset and basics */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: #eee;
-}
+/* style.css */
 
 body {
-  background: linear-gradient(180deg, #0a0a23 0%, #001e3c 100%);
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(to bottom, #0f0f1a, #081d2f);
+  color: #fff;
   overflow-x: hidden;
-  min-height: 100vh;
-  position: relative;
-  transition: background-color 0.5s ease;
+}
+
+h1.site-title {
+  text-align: center;
+  font-size: 3rem;
+  color: #80d0ff;
+  text-shadow: 0 0 20px #00ffff;
+}
+
+nav ul {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+}
+
+nav ul li {
+  margin: 0 15px;
+}
+
+nav ul li a {
+  color: #ccc;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+nav ul li a:hover {
+  color: #00ffff;
+}
+
+.intro {
+  text-align: center;
+  padding: 40px 20px;
+  max-width: 800px;
+  margin: auto;
+}
+
+.intro h2 {
+  font-size: 2rem;
+  color: #f0f8ff;
+}
+
+.intro p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #ccc;
 }
 
 /* Loader */
 .loader-wrapper {
   position: fixed;
-  inset: 0;
-  background-color: #001e3c;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: #000;
   display: flex;
-  justify-content: center;
   align-items: center;
-  z-index: 9999;
+  justify-content: center;
+  z-index: 10000;
 }
 
 .loader {
+  border: 6px solid rgba(255,255,255,0.1);
+  border-top: 6px solid #00ffff;
+  border-radius: 50%;
   width: 60px;
   height: 60px;
-  border: 8px solid #444;
-  border-top-color: #6cf;
-  border-radius: 50%;
   animation: spin 1s linear infinite;
 }
 
 @keyframes spin {
-  to { transform: rotate(360deg); }
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
-/* Stars background */
-.stars {
+/* Cursor */
+.custom-cursor {
   position: fixed;
-  inset: 0;
-  background: transparent;
-  box-shadow:
-    20px 50px 2px #fff,
-    150px 80px 3px #ddd,
-    300px 120px 2px #eee,
-    500px 200px 3px #fff,
-    700px 400px 2px #ccc,
-    900px 600px 3px #eee;
-  z-index: 0;
+  top: 0;
+  left: 0;
+  width: 24px;
+  height: 24px;
+  background: rgba(255, 255, 255, 0.6);
+  border: 2px solid #00ffff;
+  border-radius: 50%;
   pointer-events: none;
-  animation: twinkle 5s infinite alternate;
+  z-index: 9999;
+  mix-blend-mode: difference;
+  transform: translate(-50%, -50%);
+  transition: width 0.2s ease, height 0.2s ease, background 0.2s ease;
 }
 
-@keyframes twinkle {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.7; }
-}
-
-/* UFOs (simple circles with glow) */
-.ufos {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
+/* Magnetic Hover */
+.magnet {
+  display: inline-block;
+  transition: transform 0.2s ease;
+  position: relative;
   z-index: 1;
 }
 
-.ufos::before, .ufos::after {
-  content: '';
-  position: absolute;
-  border-radius: 50%;
-  background: radial-gradient(circle, #8af 70%, transparent 80%);
-  width: 60px;
-  height: 30px;
-  top: 100px;
-  left: 200px;
-  filter: drop-shadow(0 0 6px #8af);
-  animation: ufo-float 6s ease-in-out infinite;
-}
-
-.ufos::after {
-  width: 40px;
-  height: 20px;
-  top: 300px;
-  left: 700px;
-  background: radial-gradient(circle, #fa8 70%, transparent 80%);
-  filter: drop-shadow(0 0 8px #fa8);
-  animation-delay: 3s;
-}
-
-@keyframes ufo-float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-20px); }
-}
-
-/* Site Title and Nav */
-.site-title {
-  font-size: 2.8rem;
-  font-weight: 700;
-  text-align: center;
-  margin: 1rem 0;
-  color: #89c9ff;
-  text-shadow: 0 0 5px #4a90e2;
-  user-select: none;
-}
-
-/* Navigation */
-nav ul {
-  display: flex;
-  justify-content: center;
-  gap: 1.2rem;
-  list-style: none;
-  margin-bottom: 1.5rem;
-}
-
-nav ul li a {
-  position: relative;
-  color: #a8bfff;
-  font-weight: 600;
-  text-decoration: none;
-  padding: 0.3rem 0.6rem;
-  transition: color 0.3s ease;
-  cursor: pointer;
-  user-select: none;
-}
-
-nav ul li a.magnet {
-  will-change: transform;
-}
-
-nav ul li a:hover,
-nav ul li a.magnet.active {
-  color: #6cf;
-  text-shadow: 0 0 6px #6cf;
-}
-
-nav ul li a.magnet::after {
-  content: '';
-  position: absolute;
+/* Stars and UFOs */
+.stars, .ufos {
+  position: fixed;
   width: 100%;
-  height: 2px;
-  background-color: #6cf;
-  bottom: 0;
-  left: 0;
-  transform: scaleX(0);
-  transition: transform 0.3s ease;
-  transform-origin: right;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
 }
 
-nav ul li a.magnet:hover::after,
-nav ul li a.magnet.active::after {
-  transform: scaleX(1);
-  transform-origin: left
+.star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: white;
+  border-radius: 50%;
+  opacity: 0.8;
+  animation: twinkle 2s infinite ease-in-out;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 1; }
+}
+
+.ufo {
+  position: absolute;
+  width: 16px;
+  height: 8px;
+  background: #0ff;
+  border-radius: 50% 50% 0 0;
+  box-shadow: 0 0 8px #0ff;
+  animation: fly 10s linear infinite;
+}
+
+@keyframes fly {
+  from { transform: translateX(-10%) translateY(10vh); }
+  to { transform: translateX(110vw) translateY(-10vh); }
+}
+
+/* Sound & Theme Buttons */
+.controls {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 1000;
+}
+
+.controls button {
+  background: transparent;
+  border: none;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.controls button img {
+  width: 24px;
+  height: 24px;
+}
+
+/* Light Theme */
+body.light-mode {
+  background: #f4f4f4;
+  color: #111;
+}
+
+body.light-mode .site-title {
+  color: #0044cc;
+  text-shadow: none;
+}
+
+body.light-mode nav ul li a {
+  color: #333;
+}
+
+body.light-mode .intro h2 {
+  color: #000;
+}
+
+body.light-mode .intro p {
+  color: #333;
+}
