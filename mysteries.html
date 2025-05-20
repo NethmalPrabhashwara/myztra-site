@@ -3,61 +3,54 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Mysteries - Myztra</title>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Quicksand&display=swap"
-    rel="stylesheet"
-  />
+  <title>Myztra | Mysteries</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div id="loader">
-    <div class="spinner"></div>
+  <div class="loader-wrapper">
+    <div class="loader"></div>
   </div>
 
+  <div class="stars"></div>
+  <div class="ufos"></div>
+
   <header>
-    <h1>Myztra</h1>
+    <h1 class="site-title">Myztra</h1>
     <nav>
-      <a href="index.html">Home</a>
-      <a href="adventures.html">Adventures</a>
-      <a href="paranormal.html">Paranormal</a>
-      <a href="conspiracies.html">Conspiracies</a>
-      <a href="mysteries.html" class="active">Mysteries</a>
+      <ul>
+        <li><a href="index.html" class="magnet">Home</a></li>
+        <li><a href="adventures.html" class="magnet">Adventures</a></li>
+        <li><a href="paranormal.html" class="magnet">Paranormal</a></li>
+        <li><a href="conspiracies.html" class="magnet">Conspiracies</a></li>
+        <li><a href="mysteries.html" class="magnet active">Mysteries</a></li>
+        <li><a href="blog.html" class="magnet">Blog</a></li>
+      </ul>
     </nav>
+    <button id="audio-toggle" aria-label="Toggle sound" title="Toggle sound">🔊</button>
+    <button id="theme-toggle" aria-label="Toggle theme" title="Toggle theme">🌙</button>
   </header>
 
-  <main class="content">
-    <section class="hero">
-      <h2>Unsolved Mysteries</h2>
-      <p>Explore enigmatic cases that continue to puzzle investigators and historians.</p>
-    </section>
-
-    <section class="posts">
+  <main>
+    <section class="content-section">
+      <h2>Mysteries</h2>
+      <p>From lost civilizations to unsolved enigmas, step into the unknown.</p>
       <article>
-        <h3>The Bloop Mystery</h3>
-        <p>A mysterious underwater sound that baffled scientists worldwide.</p>
+        <h3>The Bloop Sound</h3>
+        <p>A deep oceanic sound captured in 1997 with no clear origin...</p>
       </article>
       <article>
-        <h3>The Dyatlov Pass Incident</h3>
-        <p>The strange deaths of hikers in the Ural Mountains remain unexplained.</p>
-      </article>
-      <article>
-        <h3>The Bermuda Triangle</h3>
-        <p>Ships and planes lost in a bizarre area of the Atlantic Ocean.</p>
+        <h3>The Voynich Manuscript</h3>
+        <p>An ancient book written in an undecipherable script baffling scholars...</p>
       </article>
     </section>
   </main>
 
-  <footer>&copy; 2025 Myztra. All rights reserved.</footer>
+  <audio id="ambience" loop autoplay>
+    <source src="sounds/mystery-bg.mp3" type="audio/mpeg" />
+  </audio>
 
-  <script>
-    window.addEventListener("load", () => {
-      document.body.classList.add("loaded");
-      setTimeout(() => {
-        const loader = document.getElementById("loader");
-        if (loader) loader.style.display = "none";
-      }, 600);
-    });
-  </script>
+  <div class="custom-cursor"></div>
+
+  <script src="script.js"></script>
 </body>
 </html>
