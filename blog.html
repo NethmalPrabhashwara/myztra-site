@@ -6,104 +6,6 @@
   <title>Myztra</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" integrity="sha512-GP50pXrjS8BAYZcN1nlsDRIVrluFND1xtqCbrBPoAYqvgbWUD7UjlixU4Wc8wDf8x0ViXKnD+2PrO/tik2V3Tw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <style>
-    body {
-      background: #000;
-      color: #fff;
-      overflow-x: hidden;
-      font-family: 'Orbitron', sans-serif;
-      scroll-behavior: smooth;
-    }
-
-    .stars, .ufos {
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    .star {
-      position: absolute;
-      width: 2px;
-      height: 2px;
-      background: white;
-      border-radius: 50%;
-      opacity: 0.8;
-      animation: twinkle 2s infinite ease-in-out;
-    }
-
-    @keyframes twinkle {
-      0%, 100% { opacity: 0.2; }
-      50% { opacity: 1; }
-    }
-
-    .ufo {
-      position: absolute;
-      width: 16px;
-      height: 8px;
-      background: #0ff;
-      border-radius: 50% 50% 0 0;
-      box-shadow: 0 0 8px #0ff;
-      animation: fly 10s linear infinite;
-    }
-
-    @keyframes fly {
-      from { transform: translateX(-10%) translateY(10vh); }
-      to { transform: translateX(110vw) translateY(-10vh); }
-    }
-
-    .custom-cursor {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 24px;
-      height: 24px;
-      background: rgba(255, 255, 255, 0.6);
-      border: 2px solid #00ffff;
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 9999;
-      mix-blend-mode: difference;
-      transform: translate(-50%, -50%);
-      transition: width 0.2s ease, height 0.2s ease, background 0.2s ease;
-    }
-
-    .dark-mode {
-      background: #111;
-      color: #eee;
-    }
-
-    .theme-toggle {
-      position: fixed;
-      top: 1rem;
-      right: 1rem;
-      z-index: 10001;
-      background: #222;
-      color: #0ff;
-      border: none;
-      padding: 0.5rem 1rem;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    .typewriter {
-      display: inline-block;
-      border-right: 2px solid #0ff;
-      white-space: nowrap;
-      overflow: hidden;
-      animation: typing 4s steps(40, end), blink 0.75s step-end infinite;
-    }
-
-    @keyframes typing {
-      from { width: 0 }
-      to { width: 100% }
-    }
-
-    @keyframes blink {
-      50% { border-color: transparent }
-    }
-  </style>
 </head>
 <body>
   <button class="theme-toggle">Toggle Theme</button>
@@ -119,6 +21,7 @@
         <li><a href="paranormal.html" class="magnet">Paranormal</a></li>
         <li><a href="conspiracies.html" class="magnet">Conspiracies</a></li>
         <li><a href="mysteries.html" class="magnet">Mysteries</a></li>
+        <li><a href="blog.html" class="magnet">Blog</a></li>
       </ul>
     </nav>
   </header>
@@ -131,48 +34,51 @@
   <audio id="ambientSound" loop>
     <source src="ambient.mp3" type="audio/mpeg">
   </audio>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" integrity="sha512-pU4eO6N9K02NYxCCQVaY8V15HDlJ1UrUdG7hQUCln4hn3LkeAZW0GH9JmU/z4pp8yM8HzEvQFJuJstR8t1P2lg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script>
-    AOS.init();
+    document.addEventListener('DOMContentLoaded', function () {
+      AOS.init();
 
-    // Cursor
-    const cursor = document.querySelector('.custom-cursor');
-    document.addEventListener('mousemove', e => {
-      cursor.style.top = `${e.clientY}px`;
-      cursor.style.left = `${e.clientX}px`;
+      // Cursor
+      const cursor = document.querySelector('.custom-cursor');
+      document.addEventListener('mousemove', e => {
+        cursor.style.top = `${e.clientY}px`;
+        cursor.style.left = `${e.clientX}px`;
+      });
+
+      // Theme Toggle
+      const toggleBtn = document.querySelector('.theme-toggle');
+      toggleBtn.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+      });
+
+      // Stars and UFOs
+      const starsContainer = document.querySelector('.stars');
+      const ufosContainer = document.querySelector('.ufos');
+
+      for (let i = 0; i < 100; i++) {
+        const star = document.createElement('div');
+        star.classList.add('star');
+        star.style.top = `${Math.random() * 100}%`;
+        star.style.left = `${Math.random() * 100}%`;
+        starsContainer.appendChild(star);
+      }
+
+      for (let i = 0; i < 3; i++) {
+        const ufo = document.createElement('div');
+        ufo.classList.add('ufo');
+        ufo.style.top = `${Math.random() * 80 + 10}%`;
+        ufo.style.left = `-${Math.random() * 100 + 20}px`;
+        ufo.style.animationDuration = `${10 + Math.random() * 10}s`;
+        ufosContainer.appendChild(ufo);
+      }
+
+      // Ambient Sound
+      const ambient = document.getElementById('ambientSound');
+      ambient.volume = 0.3;
+      ambient.play();
     });
-
-    // Theme Toggle
-    const toggleBtn = document.querySelector('.theme-toggle');
-    toggleBtn.addEventListener('click', () => {
-      document.body.classList.toggle('dark-mode');
-    });
-
-    // Stars and UFOs
-    const starsContainer = document.querySelector('.stars');
-    const ufosContainer = document.querySelector('.ufos');
-
-    for (let i = 0; i < 100; i++) {
-      const star = document.createElement('div');
-      star.classList.add('star');
-      star.style.top = `${Math.random() * 100}%`;
-      star.style.left = `${Math.random() * 100}%`;
-      starsContainer.appendChild(star);
-    }
-
-    for (let i = 0; i < 3; i++) {
-      const ufo = document.createElement('div');
-      ufo.classList.add('ufo');
-      ufo.style.top = `${Math.random() * 80 + 10}%`;
-      ufo.style.left = `-${Math.random() * 100 + 20}px`;
-      ufo.style.animationDuration = `${10 + Math.random() * 10}s`;
-      ufosContainer.appendChild(ufo);
-    }
-
-    // Ambient Sound
-    const ambient = document.getElementById('ambientSound');
-    ambient.volume = 0.3;
-    ambient.play();
   </script>
 </body>
 </html>
