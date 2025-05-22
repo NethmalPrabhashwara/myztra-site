@@ -153,6 +153,16 @@ nav ul li a.magnet {
 .filters select:focus {
   box-shadow: 0 0 10px #ffcc00aa;
 }
+.star {
+  animation-name: twinkle;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes twinkle {
+  0%, 100% {opacity: 0.3;}
+  50% {opacity: 1;}
+}
 
 /* Featured Posts */
 .featured-posts {
