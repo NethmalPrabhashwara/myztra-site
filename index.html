@@ -5,48 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Myztra</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" integrity="sha512-GP50pXrjS8BAYZcN1nlsDRIVrluFND1xtqCbrBPoAYqvgbWUD7UjlixU4Wc8wDf8x0ViXKnD+2PrO/tik2V3Tw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <style>
     body {
       background: #000;
       color: #fff;
       overflow-x: hidden;
-      margin: 0;
-      font-family: 'Bebas Neue', sans-serif;
-    }
-
-    header {
-      text-align: center;
-      padding: 20px 0;
-    }
-
-    .site-title {
-      font-size: 2.5rem;
-      color: #00ffff;
-      text-shadow: 0 0 8px #00ffff;
-    }
-
-    nav ul {
-      list-style: none;
-      padding: 0;
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-    }
-
-    nav ul li a {
-      text-decoration: none;
-      color: #ccc;
-      font-weight: bold;
-      transition: color 0.3s;
-    }
-
-    nav ul li a:hover {
-      color: #00ffff;
-    }
-
-    .intro {
-      text-align: center;
-      margin-top: 50px;
+      font-family: 'Orbitron', sans-serif;
+      scroll-behavior: smooth;
     }
 
     .stars, .ufos {
@@ -75,7 +41,7 @@
     .ufo {
       position: absolute;
       width: 16px;
-      height: 16px;
+      height: 8px;
       background: #0ff;
       border-radius: 50% 50% 0 0;
       box-shadow: 0 0 8px #0ff;
@@ -103,83 +69,47 @@
       transition: width 0.2s ease, height 0.2s ease, background 0.2s ease;
     }
 
-    .magnet {
-      display: inline-block;
-      transition: transform 0.2s ease;
-      position: relative;
-      z-index: 1;
+    .dark-mode {
+      background: #111;
+      color: #eee;
     }
 
-    .loader-wrapper {
+    .theme-toggle {
       position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: #000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 10000;
-    }
-
-    .loader {
-      border: 6px solid rgba(255,255,255,0.1);
-      border-top: 6px solid #00ffff;
-      border-radius: 50%;
-      width: 60px;
-      height: 60px;
-      animation: spin 1s linear infinite;
-    }
-
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-
-    #audio-toggle, #theme-toggle {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      background: #000;
-      color: #00ffff;
-      border: 2px solid #00ffff;
-      border-radius: 50%;
-      padding: 10px;
-      font-size: 18px;
-      cursor: pointer;
+      top: 1rem;
+      right: 1rem;
       z-index: 10001;
-      transition: background 0.3s, transform 0.2s;
+      background: #222;
+      color: #0ff;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      cursor: pointer;
     }
 
-    #audio-toggle {
-      right: 60px;
+    .typewriter {
+      display: inline-block;
+      border-right: 2px solid #0ff;
+      white-space: nowrap;
+      overflow: hidden;
+      animation: typing 4s steps(40, end), blink 0.75s step-end infinite;
     }
 
-    #audio-toggle:hover, #theme-toggle:hover {
-      background: #00ffff;
-      color: #000;
-      transform: scale(1.1);
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
     }
 
-    body.light-theme {
-      background: #f0f0f0;
-      color: #111;
+    @keyframes blink {
+      50% { border-color: transparent }
     }
   </style>
 </head>
 <body>
-  <div class="loader-wrapper">
-    <div class="loader"></div>
-  </div>
-
+  <button class="theme-toggle">Toggle Theme</button>
   <div class="stars"></div>
   <div class="ufos"></div>
-
-  <button id="audio-toggle" title="Toggle Sound">🔊</button>
-  <button id="theme-toggle" title="Toggle Theme">🌙</button>
-  <audio id="ambience" loop autoplay>
-    <source src="ambient.mp3" type="audio/mpeg">
-  </audio>
-
+  <div class="custom-cursor"></div>
   <header>
     <h1 class="site-title">Myztra</h1>
     <nav>
@@ -189,57 +119,36 @@
         <li><a href="paranormal.html" class="magnet">Paranormal</a></li>
         <li><a href="conspiracies.html" class="magnet">Conspiracies</a></li>
         <li><a href="mysteries.html" class="magnet">Mysteries</a></li>
-        <li><a href="blog.html" class="magnet">Blog</a></li>
       </ul>
     </nav>
   </header>
-
-  <main>
+  <main data-aos="fade-up">
     <section class="intro">
-      <h2>Dive into the Dark, the Weird, and the Unexplained</h2>
+      <h2 class="typewriter">Exploring the Unseen...</h2>
       <p>From shadowy conspiracies to cosmic adventures, Myztra is your portal into the secrets that lie just beyond reach.</p>
     </section>
   </main>
-
-  <div class="custom-cursor"></div>
-
+  <audio id="ambientSound" loop>
+    <source src="ambient.mp3" type="audio/mpeg">
+  </audio>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" integrity="sha512-pU4eO6N9K02NYxCCQVaY8V15HDlJ1UrUdG7hQUCln4hn3LkeAZW0GH9JmU/z4pp8yM8HzEvQFJuJstR8t1P2lg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script>
-    window.addEventListener('load', () => {
-      document.querySelector('.loader-wrapper').style.display = 'none';
-    });
+    AOS.init();
 
+    // Cursor
     const cursor = document.querySelector('.custom-cursor');
     document.addEventListener('mousemove', e => {
       cursor.style.top = `${e.clientY}px`;
       cursor.style.left = `${e.clientX}px`;
     });
 
-    const hoverables = document.querySelectorAll('a, button, .hover-effect');
-    hoverables.forEach(el => {
-      el.addEventListener('mouseenter', () => {
-        cursor.style.width = '40px';
-        cursor.style.height = '40px';
-        cursor.style.background = 'rgba(0, 255, 255, 0.2)';
-      });
-      el.addEventListener('mouseleave', () => {
-        cursor.style.width = '24px';
-        cursor.style.height = '24px';
-        cursor.style.background = 'rgba(255, 255, 255, 0.6)';
-      });
+    // Theme Toggle
+    const toggleBtn = document.querySelector('.theme-toggle');
+    toggleBtn.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
     });
 
-    document.querySelectorAll('.magnet').forEach(link => {
-      link.addEventListener('mousemove', e => {
-        const rect = link.getBoundingClientRect();
-        const x = e.clientX - rect.left - rect.width / 2;
-        const y = e.clientY - rect.top - rect.height / 2;
-        link.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
-      });
-      link.addEventListener('mouseleave', () => {
-        link.style.transform = 'translate(0, 0)';
-      });
-    });
-
+    // Stars and UFOs
     const starsContainer = document.querySelector('.stars');
     const ufosContainer = document.querySelector('.ufos');
 
@@ -260,26 +169,10 @@
       ufosContainer.appendChild(ufo);
     }
 
-    const audioToggle = document.getElementById('audio-toggle');
-    const themeToggle = document.getElementById('theme-toggle');
-    const audio = document.getElementById('ambience');
-
-    audioToggle.addEventListener('click', () => {
-      if (audio.paused) {
-        audio.play();
-        audioToggle.textContent = '🔊';
-      } else {
-        audio.pause();
-        audioToggle.textContent = '🔇';
-      }
-    });
-
-    let darkMode = true;
-    themeToggle.addEventListener('click', () => {
-      document.body.classList.toggle('light-theme');
-      darkMode = !darkMode;
-      themeToggle.textContent = darkMode ? '🌙' : '☀️';
-    });
+    // Ambient Sound
+    const ambient = document.getElementById('ambientSound');
+    ambient.volume = 0.3;
+    ambient.play();
   </script>
 </body>
 </html>
