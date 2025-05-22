@@ -2,22 +2,23 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Adventures | Myztra</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Myztra - Adventures</title>
   <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" integrity="sha512-GP50pXrjS8BAYZcN1nlsDRIVrluFND1xtqCbrBPoAYqvgbWUD7UjlixU4Wc8wDf8x0ViXKnD+2PrO/tik2V3Tw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
 </head>
 <body>
   <button class="theme-toggle">Toggle Theme</button>
   <div class="stars"></div>
   <div class="ufos"></div>
   <div class="custom-cursor"></div>
+
   <header>
     <h1 class="site-title">Myztra</h1>
     <nav>
       <ul>
         <li><a href="index.html" class="magnet">Home</a></li>
-        <li><a href="adventures.html" class="magnet">Adventures</a></li>
+        <li><a href="adventures.html" class="magnet active">Adventures</a></li>
         <li><a href="paranormal.html" class="magnet">Paranormal</a></li>
         <li><a href="conspiracies.html" class="magnet">Conspiracies</a></li>
         <li><a href="mysteries.html" class="magnet">Mysteries</a></li>
@@ -25,56 +26,62 @@
       </ul>
     </nav>
   </header>
-  <main data-aos="fade-up">
-    <section class="intro">
-      <h2 class="typewriter">Embark on Otherworldly Adventures</h2>
-      <p>Explore breathtaking journeys and surreal landscapes that defy reality. Discover myths, quests, and cosmic frontiers.</p>
+
+  <main>
+    <section class="hero" data-aos="fade-up">
+      <h2 class="typewriter">Thrilling Adventures Await</h2>
+      <p>Step into worlds unknown with explorations of ancient ruins, lost treasures, and daring quests.</p>
+    </section>
+
+    <section class="filters" data-aos="fade-up">
+      <input type="search" placeholder="Search adventures..." id="search-adventures" />
+      <select id="category-filter">
+        <option value="all">All Categories</option>
+        <option value="ancient">Ancient Ruins</option>
+        <option value="treasures">Lost Treasures</option>
+        <option value="quests">Quests</option>
+        <option value="expeditions">Expeditions</option>
+      </select>
+    </section>
+
+    <section class="featured-posts" id="adventure-posts" data-aos="fade-up">
+      <!-- Example adventure cards -->
+      <article class="post-card" data-category="ancient">
+        <img src="images/ancient-ruins.jpg" alt="Ancient Ruins" />
+        <h3>Exploring the Forgotten Temples of Angkor</h3>
+        <p>A journey through the sprawling Khmer ruins hidden deep in Cambodia’s jungle.</p>
+      </article>
+
+      <article class="post-card" data-category="treasures">
+        <img src="images/treasure-map.jpg" alt="Treasure Map" />
+        <h3>The Hunt for Pirate’s Gold in the Caribbean</h3>
+        <p>Chasing legends and maps that lead to the fabled treasures lost beneath the sea.</p>
+      </article>
+
+      <article class="post-card" data-category="quests">
+        <img src="images/quest.jpg" alt="Quest" />
+        <h3>The Hero’s Trail: A Quest Through the Scottish Highlands</h3>
+        <p>Follow the ancient paths and myths that shaped Scotland’s wild landscapes.</p>
+      </article>
+
+      <article class="post-card" data-category="expeditions">
+        <img src="images/expedition.jpg" alt="Expedition" />
+        <h3>Into the Amazon: An Expedition to the Heart of the Jungle</h3>
+        <p>Discover rare flora, fauna, and hidden tribes in one of Earth’s last frontiers.</p>
+      </article>
+    </section>
+
+    <section class="about" data-aos="fade-up">
+      <h2>About Myztra Adventures</h2>
+      <p>At Myztra, our adventures section is dedicated to bringing you thrilling stories and guides from the farthest reaches of the world and beyond. Whether you’re a treasure hunter, history buff, or nature explorer, there’s something here to spark your wanderlust.</p>
     </section>
   </main>
-  <audio id="ambientSound" loop>
-    <source src="ambient.mp3" type="audio/mpeg">
-  </audio>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" integrity="sha512-pU4eO6N9K02NYxCCQVaY8V15HDlJ1UrUdG7hQUCln4hn3LkeAZW0GH9JmU/z4pp8yM8HzEvQFJuJstR8t1P2lg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      AOS.init();
+  <footer data-aos="fade-up">
+    <p>© 2025 Myztra. All rights reserved.</p>
+  </footer>
 
-      const cursor = document.querySelector('.custom-cursor');
-      document.addEventListener('mousemove', e => {
-        cursor.style.top = `${e.clientY}px`;
-        cursor.style.left = `${e.clientX}px`;
-      });
-
-      const toggleBtn = document.querySelector('.theme-toggle');
-      toggleBtn.addEventListener('click', () => {
-        document.body.classList.toggle('dark-mode');
-      });
-
-      const starsContainer = document.querySelector('.stars');
-      const ufosContainer = document.querySelector('.ufos');
-
-      for (let i = 0; i < 100; i++) {
-        const star = document.createElement('div');
-        star.classList.add('star');
-        star.style.top = `${Math.random() * 100}%`;
-        star.style.left = `${Math.random() * 100}%`;
-        starsContainer.appendChild(star);
-      }
-
-      for (let i = 0; i < 3; i++) {
-        const ufo = document.createElement('div');
-        ufo.classList.add('ufo');
-        ufo.style.top = `${Math.random() * 80 + 10}%`;
-        ufo.style.left = `-${Math.random() * 100 + 20}px`;
-        ufo.style.animationDuration = `${10 + Math.random() * 10}s`;
-        ufosContainer.appendChild(ufo);
-      }
-
-      const ambient = document.getElementById('ambientSound');
-      ambient.volume = 0.3;
-      ambient.play();
-    });
-  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
