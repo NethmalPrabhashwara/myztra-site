@@ -2,17 +2,22 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Myztra | Paranormal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Myztra - Paranormal</title>
   <link rel="stylesheet" href="style.css" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
+    integrity="sha512-GP50pXrjS8BAYZcN1nlsDRIVrluFND1xtqCbrBPoAYqvgbWUD7UjlixU4Wc8wDf8x0ViXKnD+2PrO/tik2V3Tw=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
 </head>
 <body>
-  <div class="loader-wrapper">
-    <div class="loader"></div>
-  </div>
-
+  <button class="theme-toggle">Toggle Theme</button>
   <div class="stars"></div>
   <div class="ufos"></div>
+  <div class="custom-cursor"></div>
 
   <header>
     <h1 class="site-title">Myztra</h1>
@@ -20,7 +25,7 @@
       <ul>
         <li><a href="index.html" class="magnet">Home</a></li>
         <li><a href="adventures.html" class="magnet">Adventures</a></li>
-        <li><a href="paranormal.html" class="magnet">Paranormal</a></li>
+        <li><a href="paranormal.html" class="magnet active">Paranormal</a></li>
         <li><a href="conspiracies.html" class="magnet">Conspiracies</a></li>
         <li><a href="mysteries.html" class="magnet">Mysteries</a></li>
         <li><a href="blog.html" class="magnet">Blog</a></li>
@@ -29,16 +34,51 @@
   </header>
 
   <main>
-    <section class="intro">
-      <h2>Beyond the Veil</h2>
-      <p>Ghosts, hauntings, cryptids and other eerie phenomena—uncover the world of the unexplained that lies beneath the surface.</p>
+    <section class="hero" data-aos="fade-up">
+      <h2 class="typewriter">Exploring the Paranormal Realm...</h2>
+      <p>Dive into ghosts, cryptids, hauntings, and mysterious encounters beyond explanation.</p>
     </section>
-  </main>
 
-  <div class="custom-cursor"></div>
-  <button class="sound-toggle">🔊</button>
-  <button class="theme-toggle">🌓</button>
+    <section class="filters" data-aos="fade-up">
+      <input
+        type="search"
+        id="search-paranormal"
+        placeholder="Search paranormal posts..."
+        autocomplete="off"
+      />
+      <select id="category-filter">
+        <option value="all">All Categories</option>
+        <option value="ghosts">Ghosts</option>
+        <option value="cryptids">Cryptids</option>
+        <option value="hauntings">Hauntings</option>
+        <option value="encounters">Encounters</option>
+      </select>
+    </section>
 
-  <script src="script.js"></script>
-</body>
-</html>
+    <section class="featured-posts" data-aos="fade-up" id="paranormal-posts">
+      <article class="post-card" data-category="ghosts">
+        <img src="images/ghost1.jpg" alt="Ghostly Apparition" />
+        <h3>Ghostly Apparitions Caught on Camera</h3>
+        <p>Unveil the spine-chilling evidence of spirits captured on film.</p>
+      </article>
+      <article class="post-card" data-category="cryptids">
+        <img src="images/cryptid1.jpg" alt="Mysterious Creature" />
+        <h3>The Elusive Bigfoot: Myth or Reality?</h3>
+        <p>Explore eyewitness accounts and mysterious footprints deep in the forest.</p>
+      </article>
+      <article class="post-card" data-category="hauntings">
+        <img src="images/haunted-house.jpg" alt="Haunted House" />
+        <h3>Haunted Mansions and Their Dark Histories</h3>
+        <p>Step inside some of the world’s most famously haunted houses.</p>
+      </article>
+      <article class="post-card" data-category="encounters">
+        <img src="images/paranormal-encounter.jpg" alt="Paranormal Encounter" />
+        <h3>Close Encounters: Stories from the Unknown</h3>
+        <p>Personal accounts of unexplained phenomena and strange encounters.</p>
+      </article>
+    </section>
+
+    <section class="about" data-aos="fade-up">
+      <h2>About Paranormal Explorations</h2>
+      <p>
+        At Myztra, we delve into the mysteries beyond the natural world. Whether it’s ghost sightings, cryptid legends, or eerie hauntings, our mission is to bring you the most compelling stories an
