@@ -3,17 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Myztra | Adventures</title>
+  <title>Adventures | Myztra</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" integrity="sha512-GP50pXrjS8BAYZcN1nlsDRIVrluFND1xtqCbrBPoAYqvgbWUD7UjlixU4Wc8wDf8x0ViXKnD+2PrO/tik2V3Tw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-  <div class="loader-wrapper">
-    <div class="loader"></div>
-  </div>
-
+  <button class="theme-toggle">Toggle Theme</button>
   <div class="stars"></div>
   <div class="ufos"></div>
-
+  <div class="custom-cursor"></div>
   <header>
     <h1 class="site-title">Myztra</h1>
     <nav>
@@ -27,18 +25,56 @@
       </ul>
     </nav>
   </header>
-
-  <main>
+  <main data-aos="fade-up">
     <section class="intro">
-      <h2>Adventure Awaits</h2>
-      <p>Explore daring quests, lost civilizations, and otherworldly journeys across time and space. This is where the thrill begins.</p>
+      <h2 class="typewriter">Embark on Otherworldly Adventures</h2>
+      <p>Explore breathtaking journeys and surreal landscapes that defy reality. Discover myths, quests, and cosmic frontiers.</p>
     </section>
   </main>
+  <audio id="ambientSound" loop>
+    <source src="ambient.mp3" type="audio/mpeg">
+  </audio>
 
-  <div class="custom-cursor"></div>
-  <button class="sound-toggle">🔊</button>
-  <button class="theme-toggle">🌓</button>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" integrity="sha512-pU4eO6N9K02NYxCCQVaY8V15HDlJ1UrUdG7hQUCln4hn3LkeAZW0GH9JmU/z4pp8yM8HzEvQFJuJstR8t1P2lg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      AOS.init();
 
-  <script src="script.js"></script>
+      const cursor = document.querySelector('.custom-cursor');
+      document.addEventListener('mousemove', e => {
+        cursor.style.top = `${e.clientY}px`;
+        cursor.style.left = `${e.clientX}px`;
+      });
+
+      const toggleBtn = document.querySelector('.theme-toggle');
+      toggleBtn.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+      });
+
+      const starsContainer = document.querySelector('.stars');
+      const ufosContainer = document.querySelector('.ufos');
+
+      for (let i = 0; i < 100; i++) {
+        const star = document.createElement('div');
+        star.classList.add('star');
+        star.style.top = `${Math.random() * 100}%`;
+        star.style.left = `${Math.random() * 100}%`;
+        starsContainer.appendChild(star);
+      }
+
+      for (let i = 0; i < 3; i++) {
+        const ufo = document.createElement('div');
+        ufo.classList.add('ufo');
+        ufo.style.top = `${Math.random() * 80 + 10}%`;
+        ufo.style.left = `-${Math.random() * 100 + 20}px`;
+        ufo.style.animationDuration = `${10 + Math.random() * 10}s`;
+        ufosContainer.appendChild(ufo);
+      }
+
+      const ambient = document.getElementById('ambientSound');
+      ambient.volume = 0.3;
+      ambient.play();
+    });
+  </script>
 </body>
 </html>
