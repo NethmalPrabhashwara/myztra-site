@@ -1,81 +1,64 @@
-// script.js
-
-// Loader
-window.addEventListener('load', () => {
-  document.querySelector('.loader-wrapper').style.display = 'none';
+// Initialize AOS
+AOS.init({
+  duration: 800,
+  easing: 'ease-in-out',
+  once: true,
 });
 
-// Custom Cursor
+// Theme toggle logic
+const themeToggleBtn = document.querySelector('.theme-toggle');
+const body = document.body;
+
+themeToggleBtn.addEventListener('click', () => {
+  body.classList.toggle('light-theme');
+});
+
+// Custom cursor
 const cursor = document.querySelector('.custom-cursor');
 document.addEventListener('mousemove', e => {
-  cursor.style.top = `${e.clientY}px`;
-  cursor.style.left = `${e.clientX}px`;
+  cursor.style.left = e.clientX + 'px';
+  cursor.style.top = e.clientY + 'px';
 });
 
-const hoverables = document.querySelectorAll('a, button, .hover-effect');
-hoverables.forEach(el => {
-  el.addEventListener('mouseenter', () => {
-    cursor.style.width = '40px';
-    cursor.style.height = '40px';
-    cursor.style.background = 'rgba(0, 255, 255, 0.2)';
-  });
-  el.addEventListener('mouseleave', () => {
-    cursor.style.width = '24px';
-    cursor.style.height = '24px';
-    cursor.style.background = 'rgba(255, 255, 255, 0.6)';
-  });
-});
+// Filter adventures posts
+const searchInput = document.getElementById('search-adventures');
+const categoryFilter = document.getElementById('category-filter');
+const posts = document.querySelectorAll('.post-card');
 
-document.querySelectorAll('.magnet').forEach(link => {
-  link.addEventListener('mousemove', e => {
-    const rect = link.getBoundingClientRect();
-    const x = e.clientX - rect.left - rect.width / 2;
-    const y = e.clientY - rect.top - rect.height / 2;
-    link.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
-  });
-  link.addEventListener('mouseleave', () => {
-    link.style.transform = 'translate(0, 0)';
-  });
-});
+function filterPosts() {
+  const searchTerm = searchInput.value.toLowerCase();
+  const category = categoryFilter.value;
 
-// Stars and UFOs
-const starsContainer = document.querySelector('.stars');
-const ufosContainer = document.querySelector('.ufos');
+  posts.forEach(post => {
+    const title = post.querySelector('h3').textContent.toLowerCase();
+    const categoryMatch = category === 'all' || post.dataset.category === category;
+    const searchMatch = title.includes(searchTerm);
 
-for (let i = 0; i < 100; i++) {
+    if (categoryMatch && searchMatch) {
+      post.style.display = '';
+    } else {
+      post.style.display = 'none';
+    }
+  });
+}
+
+searchInput.addEventListener('input', filterPosts);
+categoryFilter.addEventListener('change', filterPosts);
+
+// Bonus: Simple stars background animation (optional, can be improved)
+const stars = document.querySelector('.stars');
+const starCount = 100;
+
+for (let i = 0; i < starCount; i++) {
   const star = document.createElement('div');
   star.classList.add('star');
-  star.style.top = `${Math.random() * 100}%`;
-  star.style.left = `${Math.random() * 100}%`;
-  starsContainer.appendChild(star);
+  star.style.top = Math.random() * 100 + 'vh';
+  star.style.left = Math.random() * 100 + 'vw';
+  star.style.width = star.style.height = Math.random() * 2 + 1 + 'px';
+  star.style.backgroundColor = 'white';
+  star.style.position = 'absolute';
+  star.style.borderRadius = '50%';
+  star.style.opacity = Math.random();
+  star.style.animation = `twinkle ${Math.random() * 5 + 5}s infinite`;
+  stars.appendChild(star);
 }
-
-for (let i = 0; i < 3; i++) {
-  const ufo = document.createElement('div');
-  ufo.classList.add('ufo');
-  ufo.style.top = `${Math.random() * 80 + 10}%`;
-  ufo.style.left = `-${Math.random() * 100 + 20}px`;
-  ufo.style.animationDuration = `${10 + Math.random() * 10}s`;
-  ufosContainer.appendChild(ufo);
-}
-
-// Sound Toggle
-const audio = new Audio('click.mp3');
-let soundEnabled = true;
-
-document.querySelector('.sound-toggle').addEventListener('click', () => {
-  soundEnabled = !soundEnabled;
-  audio.play();
-  alert(`Sound ${soundEnabled ? 'enabled' : 'disabled'}`);
-});
-
-document.querySelectorAll('a, button').forEach(el => {
-  el.addEventListener('click', () => {
-    if (soundEnabled) audio.play();
-  });
-});
-
-// Theme Toggle (Optional dark/light mode)
-document.querySelector('.theme-toggle').addEventListener('click', () => {
-  document.body.classList.toggle('light-theme');
-});
