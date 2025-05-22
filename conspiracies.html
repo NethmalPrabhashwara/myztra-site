@@ -2,17 +2,22 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Myztra | Conspiracies</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Myztra - Conspiracies</title>
   <link rel="stylesheet" href="style.css" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
+    integrity="sha512-GP50pXrjS8BAYZcN1nlsDRIVrluFND1xtqCbrBPoAYqvgbWUD7UjlixU4Wc8wDf8x0ViXKnD+2PrO/tik2V3Tw=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
 </head>
 <body>
-  <div class="loader-wrapper">
-    <div class="loader"></div>
-  </div>
-
+  <button class="theme-toggle">Toggle Theme</button>
   <div class="stars"></div>
   <div class="ufos"></div>
+  <div class="custom-cursor"></div>
 
   <header>
     <h1 class="site-title">Myztra</h1>
@@ -21,7 +26,7 @@
         <li><a href="index.html" class="magnet">Home</a></li>
         <li><a href="adventures.html" class="magnet">Adventures</a></li>
         <li><a href="paranormal.html" class="magnet">Paranormal</a></li>
-        <li><a href="conspiracies.html" class="magnet">Conspiracies</a></li>
+        <li><a href="conspiracies.html" class="magnet active">Conspiracies</a></li>
         <li><a href="mysteries.html" class="magnet">Mysteries</a></li>
         <li><a href="blog.html" class="magnet">Blog</a></li>
       </ul>
@@ -29,16 +34,68 @@
   </header>
 
   <main>
-    <section class="intro">
-      <h2>The Hidden Truths</h2>
-      <p>From ancient cover-ups to modern secrets, journey through the web of theories that challenge what we think we know.</p>
+    <section class="hero" data-aos="fade-up">
+      <h2 class="typewriter">Unraveling Conspiracy Theories...</h2>
+      <p>From secret societies to hidden histories, explore the shadows behind the mainstream narrative.</p>
+    </section>
+
+    <section class="filters" data-aos="fade-up">
+      <input
+        type="search"
+        id="search-conspiracies"
+        placeholder="Search conspiracy posts..."
+        autocomplete="off"
+      />
+      <select id="category-filter">
+        <option value="all">All Categories</option>
+        <option value="historical">Historical</option>
+        <option value="paranormal">Paranormal</option>
+        <option value="technology">Technology</option>
+        <option value="political">Political</option>
+      </select>
+    </section>
+
+    <section class="featured-posts" data-aos="fade-up" id="conspiracy-posts">
+      <article class="post-card" data-category="historical">
+        <img src="images/conspiracy1.jpg" alt="Secret Society" />
+        <h3>The Illuminati: Fact or Fiction?</h3>
+        <p>Investigate the origins and influence of the infamous secret society.</p>
+      </article>
+      <article class="post-card" data-category="paranormal">
+        <img src="images/conspiracy2.jpg" alt="Area 51" />
+        <h3>Area 51 and UFO Cover-Ups</h3>
+        <p>Dive into government secrets and alleged extraterrestrial encounters.</p>
+      </article>
+      <article class="post-card" data-category="technology">
+        <img src="images/conspiracy3.jpg" alt="Surveillance" />
+        <h3>Big Brother: Surveillance in the Digital Age</h3>
+        <p>How technology is used for mass surveillance and privacy invasions.</p>
+      </article>
+      <article class="post-card" data-category="political">
+        <img src="images/conspiracy4.jpg" alt="Political Scandal" />
+        <h3>Political Scandals That Shaped History</h3>
+        <p>Uncover the conspiracies behind major political upheavals.</p>
+      </article>
+    </section>
+
+    <section class="about" data-aos="fade-up">
+      <h2>About Conspiracy Theories</h2>
+      <p>
+        Conspiracies often lurk in the unseen corners of history and power. At Myztra, we seek to examine these theories critically, separating fact from fiction, and shedding light on hidden truths.
+      </p>
     </section>
   </main>
 
-  <div class="custom-cursor"></div>
-  <button class="sound-toggle">🔊</button>
-  <button class="theme-toggle">🌓</button>
+  <footer>
+    &copy; 2025 Myztra | All rights reserved.
+  </footer>
 
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"
+    integrity="sha512-Gj6GDXTP9qV0e90kdUdXuNQ1kTpy2+fTZdYEGpvwLZ2nScYo6wMZcB9KgB8+syGpGvC6axW22YuMLGr0DHZ1mQ=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  ></script>
   <script src="script.js"></script>
 </body>
 </html>
